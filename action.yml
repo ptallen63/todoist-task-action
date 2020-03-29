@@ -1,13 +1,21 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Create Todoist Task'
+description: 'Create a Todoist Taks'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  task-content:  # content of task
+    description: 'Content of the the Task to put into Todoist'
     required: true
-    default: 'World'
+    default: ''
+  project-name:  # Name of the project to add task too
+    description: 'Name of the project to add task too'
+    required: false
+    default: 'inbox'
+  due-string:  # Human Due string
+    description: 'String of to be used for due date'
+    required: false
+    default: ''
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  resposnse-message: # id of output
+    description: 'Response message from Todoist'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'

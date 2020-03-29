@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  create_task:
+    runs-on: ubuntu-latest
+    name: Create a Todois task
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
+        id: todoist
+        with:
+          content: 'Test from workfrom'
