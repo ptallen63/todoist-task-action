@@ -1349,6 +1349,8 @@ const createTask = async ({
 
 (async () => {
 
+  console.log(github, github.context, github.context.payload);
+
   try {
    // Get inputs
    const taskContent = core.getInput('task-content');
