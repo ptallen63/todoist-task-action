@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: log Issue data
-        run: echo ${{github.issue}}
+        run: echo ${{github.issue.title}}
       - name: Create Todoist Step
         uses: ./ # Uses an action in the root directory
         id: todoist
