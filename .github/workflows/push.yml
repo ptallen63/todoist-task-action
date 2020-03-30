@@ -13,4 +13,4 @@ jobs:
         id: todoist
         with:
           content: 'Test from workfrom'
-          token: ${{secrets.TODOIST_API_KEY}}
+          token: ${{ secrets.TODOIST_API_KEY }}
