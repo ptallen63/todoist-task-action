@@ -23,10 +23,10 @@ const createTask = async ({
 }) => {
   const body = {
     content,
-    due_string: dueString,
   }
 
   if (projectId) body.project_id = projectId;
+  if (dueString) body.due_string = dueString;
 
   const res = await axios(`${baseURL}/tasks`,{
     method: "POST",
