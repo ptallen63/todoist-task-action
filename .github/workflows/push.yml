@@ -1,4 +1,6 @@
-on: [push]
+on:
+  issue: [created]
+
 
 jobs:
   create_task:
@@ -8,6 +10,8 @@ jobs:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+      - name: log Issue data
+        run: echo ${{github.issue}}
       - name: Create Todoist Step
         uses: ./ # Uses an action in the root directory
         id: todoist
