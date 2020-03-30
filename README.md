@@ -34,3 +34,11 @@ This is the response message you would get back from todoist
 uses: ptallen63/todoist-task-action
 with:
   token: ${{ secrets.TODOIST_API_KEY }}
+
+## Future Todos
+
+- [ ] Add fuzzy matching for project names
+- [ ] Pass Issue label back
+- [ ] Support other action triggers
+- [ ] Set up Contribution guide
+- [ ] Set Up Linting
