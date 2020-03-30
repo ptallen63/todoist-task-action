@@ -43,7 +43,6 @@ const createTask = async ({
 (async () => {
   try {
     const { context } = github;
-    throw Error("Test Error");
     if (context.eventName !== "issues") throw Error("Can Only be used with Issues right now")
 
     const { issue } = context.payload;
