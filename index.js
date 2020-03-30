@@ -49,6 +49,8 @@ const createTask = async ({
    const dueString = core.getInput('due-string');
    const token = core.getInput('token');
 
+   console.log(token, projectName, dueString, taskContent)
+
    // Get All projects
     const projectId = await getProjectIdFromName(projectName, token);
 
