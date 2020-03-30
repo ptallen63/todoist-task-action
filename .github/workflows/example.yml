@@ -15,5 +15,4 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: todoist
         with:
-          task-content: 'Test from workfrom'
           token: ${{ secrets.TODOIST_API_KEY }}

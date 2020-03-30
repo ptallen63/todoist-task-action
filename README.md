@@ -1,22 +1,36 @@
 
-# Hello world javascript action
+# Todoist Task Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action creates a Todoist task from a Github action.
+
+🚨 This currently can only be used with an `issues` trigger. 🚨
 
 ## Inputs
 
-### `who-to-greet`
+### `token`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** This is the API Token used with your Todoist account.
+
+[Find Your API KEY](https://todoist.com/Users/viewPrefs?page=integrations)
+
+### `project-name`
+
+The project name you want this task to go to. At the moment it must be an exact match to work.
+
+### `due-string`
+
+This is the human readable due date string to pass to Todoist.
+
+ex: `today` or `next week`
 
 ## Outputs
 
-### `time`
+### `response-message`
 
-The time we greeted you.
+This is the response message you would get back from todoist
 
 ## Example usage
 
-uses: actions/hello-world-javascript-action@v1
+uses: ptallen63/todoist-task-action
 with:
-  who-to-greet: 'Mona the Octocat'
+  token: ${{ secrets.TODOIST_API_KEY }}

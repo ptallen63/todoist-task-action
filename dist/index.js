@@ -1309,33 +1309,48 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 const axios = __webpack_require__(53);
 
-const baseURL = "https://api.todoist.com/rest/v1";
+const todoistApiUrl = "https://api.todoist.com/rest/v1";
 
-const getProjectIdFromName = async (name, token) => {
-
-  // Get Projects
-  const response = await axios.get(`${baseURL}/projects`, {
+/**
+ *  Take in a project name and return the project Id in todoist if exists
+ * @param {String} projectName Name of project
+ * @param {String} token Api Key for Todoist
+ */
+const getProjectIdFromName = async (projectName, token) => {
+  // Get All Projects
+  const res = await axios.get(`${todoistApiUrl}/projects`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
   })
-  const project = response.data
-    .filter(p => p.name === name)
+  // Filter all project by name and pop off
+  // TODO: Would be Cool to do some fuzzy matching here
+  const project = res.data
+    .filter(p => p.name === projectName)
     .pop()
   return project ? project.id : null;
 }
 
-const createTask = async ({
-  projectId, content, dueString, token
-}) => {
+/**
+ *
+ * @param {String} tokent todoist api key
+ * @param {Object} options
+ * @param {Number} options.projectId todoist project id
+ * @param {String} options.content content for task
+ * @param {String} options.dueString Human readable due string
+ */
+const createTask = async ( token, { projectId, content, dueString }) => {
+  // Buidl request body object
   const body = {
     content,
   }
 
+  // if there are options present add them tot he request
   if (projectId) body.project_id = projectId;
   if (dueString) body.due_string = dueString;
 
-  const res = await axios(`${baseURL}/tasks`,{
+  // Make reques to todoist
+  const res = await axios(`${todoistApiUrl}/tasks`,{
     method: "POST",
     data: body,
     headers: {
@@ -1344,13 +1359,13 @@ const createTask = async ({
     }
   })
 
+  // Return the data
   return res.data;
 }
 
 (async () => {
   try {
     const { context } = github;
-    throw Error("Test Error");
     if (context.eventName !== "issues") throw Error("Can Only be used with Issues right now")
 
     const { issue } = context.payload;
@@ -1360,14 +1375,14 @@ const createTask = async ({
     const dueString = core.getInput('due-string');
     const token = core.getInput('token');
 
-   // Get All projects
+   // Get project id from todoist project;
     const projectId = await getProjectIdFromName(projectName, token);
 
-    const res = await createTask({
+    // Create the task
+    const res = await createTask(token, {
       content: taskContent,
       projectId: projectId,
       dueString: dueString,
-      token,
     })
 
     core.setOutput('response-message', JSON.stringify(res, null, 2));
