@@ -1370,7 +1370,7 @@ const createTask = async ( token, { projectId, content, dueString }) => {
 
     const { issue } = context.payload;
 
-    console.log({issue});
+    console.log({issue, context});
    // Get inputs
     const taskContent = `${issue.title} *${issue.repository.full_name}]* [ issue 🔗](${issue.html_url})`;
     const projectName = core.getInput('project-name');
