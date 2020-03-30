@@ -31,9 +31,12 @@ This is the response message you would get back from todoist
 
 ## Example usage
 
+```yml
 uses: ptallen63/todoist-task-action
 with:
   token: ${{ secrets.TODOIST_API_KEY }}
+```
+
 
 ## Future Todos
 
