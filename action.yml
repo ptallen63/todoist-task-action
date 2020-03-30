@@ -1,10 +1,10 @@
 name: 'Create Todoist Task'
 description: 'Create a Todoist Taks'
 inputs:
-  task-content:  # content of task
-    description: 'Content of the the Task to put into Todoist'
+  token:  # Todoist API token
+    description: 'token for the todoist API'
     required: true
-    default: ''
+    default: null
   project-name:  # Name of the project to add task too
     description: 'Name of the project to add task too'
     required: false
@@ -13,6 +13,7 @@ inputs:
     description: 'String of to be used for due date'
     required: false
     default: ''
+
 outputs:
   resposnse-message: # id of output
     description: 'Response message from Todoist'

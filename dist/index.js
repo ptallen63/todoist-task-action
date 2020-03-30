@@ -1349,13 +1349,16 @@ const createTask = async ({
 
 (async () => {
 
-  console.log(github, github.context, github.context.payload);
+  const { payload } = github.context;
+  if (payload.eventName !== "issues") throw Error("Can Only be used with Issues right now")
+
+  const { issue } = payload;
 
   try {
    // Get inputs
-   const taskContent = core.getInput('task-content');
-   const projectName = core.getInput('project-name');
-   const dueString = core.getInput('due-string');
+    const taskContent = `${issue.title} [ issue 🔗](${issue.html_url})`;
+    const projectName = core.getInput('project-name');
+    const dueString = core.getInput('due-string');
     const token = core.getInput('token');
 
    // Get All projects
