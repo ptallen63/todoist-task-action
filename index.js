@@ -42,7 +42,7 @@ const createTask = async ({
 
 (async () => {
 
-  const { context } = github.context;
+  const { context } = github;
   console.log(context, context.eventName);
   if (context.eventName !== "issues") throw Error("Can Only be used with Issues right now")
 
