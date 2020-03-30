@@ -1348,14 +1348,12 @@ const createTask = async ({
 }
 
 (async () => {
-
-  const { context } = github;
-  console.log(context, context.eventName);
-  if (context.eventName !== "issues") throw Error("Can Only be used with Issues right now")
-
-  const { issue } = context.payload;
-
   try {
+    const { context } = github;
+    throw Error("Test Error");
+    if (context.eventName !== "issues") throw Error("Can Only be used with Issues right now")
+
+    const { issue } = context.payload;
    // Get inputs
     const taskContent = `${issue.title} [ issue 🔗](${issue.html_url})`;
     const projectName = core.getInput('project-name');
