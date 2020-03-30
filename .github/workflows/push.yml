@@ -1,5 +1,5 @@
 on:
-  issue: [created]
+  issues: [opened]
 
 
 jobs:
