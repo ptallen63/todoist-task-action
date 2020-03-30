@@ -1,7 +1,8 @@
 name: 'Create Todoist Task'
 description: 'Create a Todoist Taks'
-icon: 'check-square'
-color: 'red'
+branding:
+  icon: 'check-square'
+  color: 'blue'
 inputs:
   token:  # Todoist API token
     description: 'token for the todoist API'
