@@ -59,7 +59,7 @@ const createTask = async ({
       token,
     })
 
-    core.setOutput('response-message', res);
+    core.setOutput('response-message', JSON.stringify(res, null, 2));
 
   } catch (error) {
     core.setFailed(error.message);
