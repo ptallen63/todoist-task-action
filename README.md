@@ -32,7 +32,7 @@ This is the response message you would get back from todoist
 ## Example usage
 
 ```yml
-uses: ptallen63/todoist-task-action
+uses: ptallen63/todoist-task-action@v1
 with:
   token: ${{ secrets.TODOIST_API_KEY }}
 ```
