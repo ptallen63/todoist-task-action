@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ptallen63/todoist-task-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.3",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^2.1.1",
     "axios": "^0.19.2"
   },
